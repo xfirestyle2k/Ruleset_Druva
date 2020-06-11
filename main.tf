@@ -7,6 +7,7 @@ provider "nsxt" {
 
 
 ###################### creating Management Gateway Firewall rule ######################
+            ###################### not possible yet ######################
 /*
 resource "nsxt_policy_gateway_policy" "mgw_policy" {
   category     = "LocalGatewayRules"
@@ -35,7 +36,7 @@ resource "nsxt_policy_gateway_policy" "mgw_policy" {
 }
 
 ###################### creating Compute Gateway Firewall rule ######################
-
+            ###################### not possible yet ######################
 resource "nsxt_policy_gateway_policy" "cgw_policy" {
   category     = "LocalGatewayRules"
   display_name = "default"
