@@ -7,7 +7,7 @@ provider "nsxt" {
 
 
 ###################### creating Management Gateway Firewall rule ######################
-
+/*
 resource "nsxt_policy_gateway_policy" "mgw_policy" {
   category     = "LocalGatewayRules"
   display_name = "default"
@@ -80,7 +80,7 @@ resource "nsxt_policy_gateway_policy" "cgw_policy" {
     sources_excluded = false
   }
 }
-
+*/
 ###################### creating Groups ######################
 
 // creating Group for Druva_Proxy:
@@ -143,7 +143,7 @@ resource "nsxt_policy_security_policy" "Druva_Proxy" {
   category     = "Application"
   rule {
     display_name       = "Allow_vCenter_outbound"
-    source_groups      = ["${nsxt_policy_group.Druva_Proxy.path}"]
+    source_groups      = ["${nsxt_policy_group.Druva_Proxy.path}", "${nsxt_policy_group.Druva_Cache.path}"]
     destination_groups = ["${nsxt_policy_group.vCenter.path}"]
     action             = "ALLOW"
     services           = ["/infra/services/HTTPS"]
@@ -152,14 +152,14 @@ resource "nsxt_policy_security_policy" "Druva_Proxy" {
   rule {
     display_name       = "Allow_vCenter_inbound"
     source_groups      = ["${nsxt_policy_group.vCenter.path}"]
-    destination_groups = ["${nsxt_policy_group.Druva_Proxy.path}"]
+    destination_groups = ["${nsxt_policy_group.Druva_Proxy.path}", "${nsxt_policy_group.Druva_Cache.path}"]
     action             = "ALLOW"
     services           = ["/infra/services/HTTPS"]
     logged             = true
   }
   rule {
     display_name       = "Allow_Restore_Outbound"
-    source_groups      = ["${nsxt_policy_group.Druva_Proxy.path}"]
+    source_groups      = ["${nsxt_policy_group.Druva_Proxy.path}", "${nsxt_policy_group.Druva_Cache.path}"]
     destination_groups = ["${nsxt_policy_group.RFC_1918.path}"]
     action             = "ALLOW"
     services           = ["${nsxt_policy_service.Druva_Restore_Port.path}"]
@@ -167,7 +167,7 @@ resource "nsxt_policy_security_policy" "Druva_Proxy" {
   }
   rule {
     display_name       = "Internet Access"
-    source_groups      = ["${nsxt_policy_group.Druva_Proxy.path}"]
+    source_groups      = ["${nsxt_policy_group.Druva_Proxy.path}", "${nsxt_policy_group.Druva_Cache.path}"]
     destination_groups = ["${nsxt_policy_group.RFC_1918.path}"]
     destinations_excluded = true
     action             = "ALLOW"
@@ -176,7 +176,7 @@ resource "nsxt_policy_security_policy" "Druva_Proxy" {
   }
   rule {
     display_name       = "Deny_Traffic_Outbound"
-    source_groups      = ["${nsxt_policy_group.Druva_Proxy.path}"]
+    source_groups      = ["${nsxt_policy_group.Druva_Proxy.path}", "${nsxt_policy_group.Druva_Cache.path}"]
     destination_groups = ["${nsxt_policy_group.RFC_1918.path}"]
     action             = "REJECT"
     disabled           = true
@@ -186,7 +186,7 @@ resource "nsxt_policy_security_policy" "Druva_Proxy" {
   rule {
       display_name       = "Deny_Traffic_Inbound"
       source_groups      = ["${nsxt_policy_group.RFC_1918.path}"]
-      destination_groups = ["${nsxt_policy_group.Druva_Proxy.path}"]
+      destination_groups = ["${nsxt_policy_group.Druva_Proxy.path}", "${nsxt_policy_group.Druva_Cache.path}"]
       action             = "REJECT"
       disabled           = true
       services           = []
