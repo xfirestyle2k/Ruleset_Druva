@@ -35,4 +35,4 @@ Currently it is not possible to create MGW or CGW Rules, as soon as it possible 
 
 # Support
 
-if you have any problems with the script, you always can reach out to me and I will try to support and help you as soon as possible!
+if you have any problems with this script, you always can reach out to me and I will try to support and help you as soon as possible!
