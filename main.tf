@@ -38,8 +38,8 @@ resource "nsxt_policy_group" "RFC_1918" {
 
 // creating Services TCP 8443:
 resource "nsxt_policy_service" "Druva_Restore_SQL" {
-  description  = "Druva_Restore_Port provisioned by Terraform"
-  display_name = "Druva_Restore_Port TCP3542"
+  description  = "Druva_Restore_SQL provisioned by Terraform"
+  display_name = "Druva_Restore_SQL TCP3542"
 
   l4_port_set_entry {
     display_name      = "TCP3542"
@@ -74,14 +74,15 @@ resource "nsxt_policy_security_policy" "Druva_Proxy" {
     services           = ["/infra/services/HTTPS"]
     logged             = true
   }
-  rule {
+/* ###################### ESXi access is not needed! ######################
+ rule {
     display_name       = "Allow_ESXi_outbound"
     source_groups      = ["${nsxt_policy_group.Druva_Proxy.path}", "${nsxt_policy_group.Druva_Cache.path}"]
     destination_groups = ["/infra/domains/mgw/groups/ESXI"]
     action             = "ALLOW"
     services           = ["/infra/services/VMware_Remote_Console"]
     logged             = true
-  }
+  }*/
   rule {
     display_name       = "Allow_Restore_SQL_Outbound"
     source_groups      = ["${nsxt_policy_group.Druva_Proxy.path}", "${nsxt_policy_group.Druva_Cache.path}"]

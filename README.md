@@ -15,7 +15,7 @@ Groups for Druva Proxy, Druva Cache and RFC_1918 (private IP-Ranges).
 
 Service for SQL restore TCP 3542.
 
-Distributed Firewall Section with 5 Allow Rules and 2 disabled deny rules.
+Distributed Firewall Section with 4 Allow Rules and 2 disabled deny rules.
 
 Next step would be clone this repo and create a new file and name it "terraform.tfvars" in the same Folder. For NSX-T we only need 3 variables.
 
@@ -30,6 +30,7 @@ Fill this file and install Terraform
 Rest will be stright forward, console to the directory, terraform init, terraform apply.
 
 After 5 seconds you will have a fully working Ruleset for Druva Phoenix Cloud.
+Only step remaining, fill the created groups Druva Proxy, Druva Cache.
 
 # Support
 
