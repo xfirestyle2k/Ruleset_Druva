@@ -11,7 +11,7 @@ https://nicovibert.com or https://www.securefever.com/blog/terraform-blueprint-f
 
 This Terraform code apply Groups, Services and Distributed Firewall Rules. Following will be created:
 
-Groups for Druva Proxy, Druva Cache and RFC_1918 (private IP-Ranges).
+Groups for Druva Proxy, Druva Cache and RFC_1918 (private IP-Ranges) and SQL-Server.
 
 Service for SQL restore TCP 3542.
 
@@ -30,7 +30,7 @@ Fill this file and install Terraform.
 open a console, navigate to the directory, terraform init, terraform apply.
 
 After 5 seconds you will have a fully working Ruleset for Druva Phoenix Cloud.
-Only step remaining, fill the created groups Druva Proxy, Druva Cache.
+Only step remaining, fill the created groups Druva Proxy, Druva Cache and SQL-Server.
 Currently it is not possible to create MGW or CGW Rules, as soon as it possible I will add it to the code.
 
 # Support

@@ -21,6 +21,13 @@ resource "nsxt_policy_group" "Druva_Cache" {
   domain       = "cgw"
 }
 
+// creating Group for SQL-Server:
+resource "nsxt_policy_group" "SQL-Server" {
+  display_name = "SQL-Server"
+  description  = "Created from Terraform SQL-Server"
+  domain       = "cgw"
+}
+
 // creating Group for RFC_1918:
 resource "nsxt_policy_group" "RFC_1918" {
   display_name = "RFC_1918"
@@ -86,7 +93,7 @@ resource "nsxt_policy_security_policy" "Druva_Proxy" {
   rule {
     display_name       = "Allow_Restore_SQL_Outbound"
     source_groups      = ["${nsxt_policy_group.Druva_Proxy.path}", "${nsxt_policy_group.Druva_Cache.path}"]
-    destination_groups = ["${nsxt_policy_group.RFC_1918.path}"]
+    destination_groups = ["${nsxt_policy_group.SQL-Server.path}"]
     action             = "ALLOW"
     services           = ["${nsxt_policy_service.Druva_Restore_SQL.path}"]
     logged             = true
