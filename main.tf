@@ -99,7 +99,7 @@ resource "nsxt_policy_security_policy" "Druva_Proxy" {
     logged             = true
   }
   rule {
-    display_name       = "Internet Access"
+    display_name       = "Internet_Access"
     source_groups      = ["${nsxt_policy_group.Druva_Proxy.path}", "${nsxt_policy_group.Druva_Cache.path}"]
     destination_groups = ["${nsxt_policy_group.RFC_1918.path}"]
     destinations_excluded = true
