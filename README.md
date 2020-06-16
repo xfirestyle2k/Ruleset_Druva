@@ -17,7 +17,7 @@ Service for SQL restore TCP 3542.
 
 Distributed Firewall Section with 4 Allow Rules and 2 disabled deny rules.
 
-Next step would be clone this repo and create a new file and name it "terraform.tfvars" in the same Folder. For NSX-T we only need 3 variables.
+Clone this repo and create a new file, name it "terraform.tfvars" and save it to the same Folder. For NSX-T we only need 3 variables.
 
 Host = "nsx-X-XX-X-XX.rp.vmwarevmc.com/vmc/reverse-proxy/api/orgs/84e"
 
@@ -25,12 +25,13 @@ vmc_token = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 
 org-id = "XXXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXX"
 
-Fill this file and install Terraform
+Fill this file and install Terraform.
 
-Rest will be stright forward, console to the directory, terraform init, terraform apply.
+open a console, navigate to the directory, terraform init, terraform apply.
 
 After 5 seconds you will have a fully working Ruleset for Druva Phoenix Cloud.
 Only step remaining, fill the created groups Druva Proxy, Druva Cache.
+Currently it is not possible to create MGW or CGW Rules, as soon as it possible I will add it to the code.
 
 # Support
 
