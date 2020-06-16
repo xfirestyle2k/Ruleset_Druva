@@ -12,7 +12,9 @@ https://nicovibert.com or https://www.securefever.com/blog/terraform-blueprint-f
 This Terraform code apply Groups, Services and Distributed Firewall Rules. Following will be created:
 
 Groups for Druva Proxy, Druva Cache and RFC_1918 (private IP-Ranges).
+
 Service for SQL restore TCP 3542.
+
 Distributed Firewall Section with 5 Allow Rules and 2 disabled deny rules.
 
 Next step would be clone this repo and create a new file and name it "terraform.tfvars" in the same Folder. For NSX-T we only need 3 variables.
