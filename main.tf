@@ -43,7 +43,7 @@ resource "nsxt_policy_group" "RFC_1918" {
 
 ###################### creating Services ######################
 
-// creating Services TCP 8443:
+// creating Services TCP 3542:
 resource "nsxt_policy_service" "Druva_Restore_SQL" {
   description  = "Druva_Restore_SQL provisioned by Terraform"
   display_name = "Druva_Restore_SQL TCP3542"
